@@ -2,6 +2,7 @@
 ## Mục lục
 - 1.[Một số câu lệnh git cơ bản](#một-số-câu-lệnh-git-cơ-bản)
 - 2.[Xử lý lỗi](#xử-lý-lỗi)
+  - [Lỗi liên quan đến xung đột history](#để-quản-lý-lịch-sử-và-nội-dung-giữa-hai-thư-mục-git-khác-nhau-bạn-có-một-số-tùy-chọn-tuỳ-theo-nhu-cầu-cụ-thể-dưới-đây-là-các-trường-hợp-và-các-bước-thực-hiện-tương-ứng)
 ---
 ## Một số câu lệnh git cơ bản
 
