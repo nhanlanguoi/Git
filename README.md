@@ -1,7 +1,9 @@
 # GIỚI THIỆU VỀ GIT
 ## Mục lục
 - 1.[Một số câu lệnh git cơ bản](#một-số-câu-lệnh-git-cơ-bản)
-- 2.[Xử lý lỗi](#xử-lý-lỗi)
+- 2.[Một số tính năng cần thiết](#một-số-tính-năng-cần-thiết)
+  - [pull data without lose changes](#pull-data-without-lose-changes)
+- 3.[Xử lý lỗi](#xử-lý-lỗi)
   - [Lỗi liên quan đến xung đột history](#để-quản-lý-lịch-sử-và-nội-dung-giữa-hai-thư-mục-git-khác-nhau-bạn-có-một-số-tùy-chọn-tuỳ-theo-nhu-cầu-cụ-thể-dưới-đây-là-các-trường-hợp-và-các-bước-thực-hiện-tương-ứng)
 ---
 ## Một số câu lệnh git cơ bản
@@ -139,10 +141,77 @@ git push origin --delete <branch-name>: Xóa nhánh trên remote.
 git push origin --delete <branch-name>
 ```
 
+---
+
+## Một số tính năng cần thiết 
+### Pull data without lose changes
 
 
+#### 1. Sử dụng git pull --rebase
+- Lệnh này sẽ lấy những thay đổi từ remote và đặt chúng lên trên các thay đổi của bạn. Cách này giúp tránh các commit hợp nhất không cần thiết và giữ các thay đổi của bạn ở vị trí sau cùng.
 
+```bash
+git pull --rebase origin <tên-branch>
+```
+Giải thích: git pull --rebase sẽ cập nhật code từ remote, và nếu có xung đột giữa code remote và code bạn đang làm, Git sẽ yêu cầu bạn giải quyết các xung đột đó.
 
+#### 2. Sử dụng git stash để tạm thời lưu các thay đổi của bạn
+- Đây là phương pháp lưu các thay đổi chưa commit của bạn vào stash (một dạng bộ đệm tạm), sau đó bạn có thể kéo code mới từ remote về và lấy lại các thay đổi của mình sau đó.
+
+```bash
+# Bước 1: Lưu thay đổi của bạn
+git stash
+
+# Bước 2: Kéo code mới nhất từ remote
+git pull origin <tên-branch>
+
+# Bước 3: Lấy lại thay đổi của bạn từ stash
+git stash pop
+```
+Giải thích: git stash sẽ lưu các thay đổi của bạn vào một nơi tạm thời mà không cần commit. Sau khi bạn kéo code từ remote về xong, git stash pop sẽ lấy lại các thay đổi của bạn và áp dụng lên code mới.
+#### 3. Sử dụng git fetch và git merge thủ công
+Nếu bạn muốn kiểm soát tốt hơn quá trình cập nhật, bạn có thể kéo code từ remote mà không kết hợp tự động, sau đó thực hiện hợp nhất (merge) thủ công.
+
+```bash
+# Bước 1: Fetch các thay đổi từ remote mà không merge
+git fetch origin
+
+# Bước 2: Merge các thay đổi từ remote vào branch hiện tại của bạn
+git merge origin/<tên-branch>
+```
+Giải thích: git fetch chỉ lấy code từ remote về mà không hợp nhất vào branch hiện tại. Sau đó, git merge sẽ kết hợp các thay đổi từ remote vào branch của bạn, cho phép bạn giải quyết xung đột (nếu có) một cách thủ công.
+#### 4. Sử dụng git cherry-pick nếu chỉ muốn lấy một số commit từ remote
+Nếu remote có một số commit mà bạn muốn áp dụng, bạn có thể dùng git cherry-pick để áp dụng chúng mà không phải cập nhật toàn bộ.
+
+```bash
+# Lấy commit cụ thể từ remote
+git cherry-pick <commit-hash>
+```
+Giải thích: git cherry-pick sẽ áp dụng từng commit mà bạn chỉ định từ remote vào branch hiện tại của bạn, giúp bạn giữ lại các thay đổi hiện tại.
+#### 5. Khôi phục lại file đã xóa mà không reset toàn bộ code
+Nếu bạn chỉ lỡ xóa một file hoặc thư mục và muốn khôi phục lại mà không reset toàn bộ, bạn có thể dùng git checkout để lấy lại file từ remote mà không ảnh hưởng đến các file khác.
+
+```bash
+git checkout origin/<tên-branch> -- <đường-dẫn-file-hoặc-folder>
+```
+Giải thích: Lệnh này sẽ lấy lại file hoặc folder cụ thể từ branch remote mà không làm thay đổi các file khác.
+
+#### 6. Commit thay đổi cục bộ trước khi pull
+Nếu các thay đổi hiện tại là cần thiết và bạn muốn lưu lại, bạn có thể commit chúng trước, sau đó thực hiện git pull:
+```bash
+
+git add .                       # Thêm tất cả thay đổi
+git commit -m "Lưu thay đổi cục bộ"
+git pull origin master          # Lấy thay đổi từ remote và merge vào
+```
+#### 7. Nếu không cần giữ thay đổi cục bộ và muốn khôi phục về trạng thái remote hoàn toàn
+Nếu bạn muốn bỏ qua các thay đổi cục bộ chưa commit và đồng bộ hoàn toàn với remote, bạn có thể dùng reset --hard:
+```bash
+git reset --hard origin/master   # Khôi phục hoàn toàn theo remote, bỏ qua thay đổi cục bộ
+```
+Lưu ý: Cẩn thận với reset --hard vì lệnh này sẽ xóa các thay đổi cục bộ chưa commit.
+
+---
 
 ## Xử lý lỗi 
 
