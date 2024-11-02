@@ -1,3 +1,6 @@
+
+###Xử lý lỗi 
+
 Để quản lý lịch sử và nội dung giữa hai thư mục Git khác nhau, bạn có một số tùy chọn tuỳ theo nhu cầu cụ thể. Dưới đây là các trường hợp và các bước thực hiện tương ứng:
 
 1. Gộp lịch sử (history) của hai thư mục Git (local và remote)
