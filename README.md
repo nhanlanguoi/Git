@@ -344,8 +344,8 @@ git push origin main
 Sau khi thực hiện các bước trên, bạn có thể truy cập kho GitHub của mình và kiểm tra xem dự án đã được đẩy lên đúng cách.
 
 Các lệnh Git cơ bản:
-git status: Kiểm tra trạng thái của kho Git.
-git add .: Thêm tất cả các thay đổi vào staging area.
-git commit -m "message": Commit các thay đổi với thông điệp.
-git push origin main: Đẩy thay đổi lên kho GitHub.
-git pull origin main: Tải về và hợp nhất thay đổi từ kho GitHub.
+- git status: Kiểm tra trạng thái của kho Git.
+- git add .: Thêm tất cả các thay đổi vào staging area.
+- git commit -m "message": Commit các thay đổi với thông điệp.
+- git push origin main: Đẩy thay đổi lên kho GitHub.
+- git pull origin main: Tải về và hợp nhất thay đổi từ kho GitHub.
