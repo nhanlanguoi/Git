@@ -287,65 +287,29 @@ Các lệnh này sẽ giúp bạn quản lý lịch sử và nội dung của ha
 
 # Hướng dẫn tạo và đẩy dự án lên Git
 
-## 1. Tạo kho Git mới trên GitHub
+2. Tạo project với git
+- clone 1 project có sẵn
+=> git clone link_https
 
-1. Đăng nhập vào GitHub.
-2. Trên trang chính của GitHub, nhấp vào **New** (hoặc "Create new repository").
-3. Đặt tên cho kho của bạn (ví dụ: `my-project`).
-4. Chọn các tùy chọn kho phù hợp (có thể để kho là public hoặc private).
-5. Nhấn **Create repository**.
-
-## 2. Khởi tạo Git trong thư mục dự án
-
-1. Mở terminal hoặc command prompt.
-2. Di chuyển đến thư mục dự án của bạn (ví dụ: `cd /path/to/your/project`).
-3. Chạy lệnh sau để khởi tạo kho Git cục bộ:
-
-   ```bash
-   git init
-   ```
-3. Kết nối với kho GitHub
-Sao chép URL của kho Git mà bạn vừa tạo trên GitHub (ví dụ: https://github.com/your-username/my-project.git).
-
-Kết nối kho Git cục bộ với kho Git trên GitHub bằng lệnh sau:
-
+- Tạo 1 project trên github
 ```bash
-git remote add origin https://github.com/your-username/my-project.git
-```
-Thay thế your-username và my-project bằng thông tin thực tế của bạn.
-
-4. Thêm các thay đổi và commit
-Thêm tất cả các tệp hiện có vào Git staging:
-```
-bash
-git add .
-```
-Commit các thay đổi của bạn:
-```
-bash
-git commit -m "Initial commit"
-```
-Bạn có thể thay đổi thông điệp commit phù hợp.
-
-5. Đẩy các thay đổi lên GitHub
-Nếu đây là lần đầu tiên bạn đẩy dự án lên GitHub, bạn cần thiết lập nhánh chính (main branch) và đẩy nó lên GitHub:
-
-```bash
-git push --set-upstream origin main
-```
-Lệnh này sẽ đẩy nhánh main lên kho GitHub của bạn và thiết lập nhánh origin/main làm nhánh theo dõi.
-
-Sau lần đầu đẩy, bạn có thể dùng lệnh sau để đẩy các thay đổi sau này:
-
-```bash
+Tạo 1 github repository (folder) - nơi chứa code
+Clone project này:  git clone link_your_repo
+Viết code
+git status ( kiểm tra trạng thái files)
+git add .  (thêm files)
+git commit  -m “your_message”  (tạo nội dung commit)
 git push origin main
 ```
-6. Kiểm tra trên GitHub
-Sau khi thực hiện các bước trên, bạn có thể truy cập kho GitHub của mình và kiểm tra xem dự án đã được đẩy lên đúng cách.
 
-Các lệnh Git cơ bản:
-- git status: Kiểm tra trạng thái của kho Git.
-- git add .: Thêm tất cả các thay đổi vào staging area.
-- git commit -m "message": Commit các thay đổi với thông điệp.
-- git push origin main: Đẩy thay đổi lên kho GitHub.
-- git pull origin main: Tải về và hợp nhất thay đổi từ kho GitHub.
+- Tạo project local và đẩy lên github
+```bash
+Tạo 1 github repo
+git init
+Viết code
+git status
+git add .
+git commit -m “your message”
+git remote add origin https://…..
+git push origin master
+```
