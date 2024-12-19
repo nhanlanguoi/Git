@@ -141,7 +141,19 @@ git push origin --delete <branch-name>: Xóa nhánh trên remote.
 ```bash
 git push origin --delete <branch-name>
 ```
+git rebase
 
+git rebase là một lệnh dùng để thay đổi lịch sử commit của nhánh hiện tại bằng cách áp dụng lại các commit của nhánh đó lên một nhánh khác (thường là nhánh chính như main hoặc master). Khi bạn rebase, Git sẽ “di chuyển” toàn bộ các commit của bạn từ vị trí hiện tại lên đầu của nhánh đích mà bạn chỉ định, giúp lịch sử commit trở nên gọn gàng và dễ hiểu hơn.
+
+Cụ thể, lệnh git rebase giúp tái áp dụng các commit từ nhánh hiện tại (ví dụ feature-branch) lên đầu nhánh đích (ví dụ main), thay vì sử dụng merge (gộp các thay đổi lại với nhau).
+
+Ví dụ sử dụng:
+Rebase nhánh của bạn lên nhánh main:
+```bash
+git checkout feature-branch
+git fetch origin           # Tải về những thay đổi mới nhất từ kho từ xa
+git rebase origin/main      # Rebase nhánh feature-branch lên nhánh main
+```
 ---
 
 ## Một số tính năng cần thiết 
