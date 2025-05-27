@@ -5,7 +5,8 @@
   - [pull data without lose changes](#pull-data-without-lose-changes)
 - 3.[Xử lý lỗi](#xử-lý-lỗi)
   - [Lỗi liên quan đến xung đột history](#để-quản-lý-lịch-sử-và-nội-dung-giữa-hai-thư-mục-git-khác-nhau-bạn-có-một-số-tùy-chọn-tuỳ-theo-nhu-cầu-cụ-thể-dưới-đây-là-các-trường-hợp-và-các-bước-thực-hiện-tương-ứng)
-- 4.[hướng dẫn tạo và đẩy git](#hướng-dẫn-tạo-và-đẩy-dự-án-lên-git) 
+- 4.[hướng dẫn tạo và đẩy git](#hướng-dẫn-tạo-và-đẩy-dự-án-lên-git)
+- 5.[Các lệnh cần nhớ](#Các-lệnh-bạn-cần-nhớ)
 ---
 ## Một số câu lệnh git cơ bản
 
@@ -330,4 +331,10 @@ git push origin master
 ```bash
 git pull --no-rebase origin main
 ```
-- => sau khi xử lý phải add . và commit  và push như thường 
+- => sau khi xử lý phải add . và commit  và push như thường
+
+- nếu bạn muốn reset lại mọi thứ từ lần push cuối cùng lên git
+```json
+git fetch origin
+git reset --hard origin/main
+```
