@@ -325,3 +325,9 @@ git commit -m “your message”
 git remote add origin https://…..
 git push origin master
 ```
+# Các lệnh bạn cần nhớ
+- nếu có người sửa trên trùng code của bạn thì bạn cứ add và commit sau đó push và nó hiện thông bao pull nếu muốn an toàn thi dùng
+```bash
+git pull --no-rebase origin main
+```
+- => sau khi xử lý phải add . và commit  và push như thường 
